@@ -1,9 +1,9 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const connectToDatabase = require('./database/database');
+import {} from 'dotenv/config';
+import  express  from 'express';
+import cors from 'cors';
+import { connectToDatabase } from './database/database.js';
 
-const port = process.env.PORT ?? 3001;
+const port = process.env.PORT ?? process.env.PORT_DEV;
 const app = express();
 
 connectToDatabase();
