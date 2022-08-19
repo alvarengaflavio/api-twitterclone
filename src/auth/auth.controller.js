@@ -10,7 +10,9 @@ export const loginController = async (req, res) => {
     const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (!isPasswordMatch) throw new Error('Password does not match');
 
-    res.status(200).send(user);
+    const token = authService.generateToken(user.id);
+
+    res.status(200).send({ token });
   } catch (err) {
     console.log(err);
     return res.status(400).send({
