@@ -15,7 +15,7 @@ export const createUserService = async createUser => {
     const newUser = await User.create(user);
     return newUser.toJSON();
   } catch (err) {
-    throw new Error('Error creating user');
+    throw new Error('Error creating user no selfison');
   }
 };
 
