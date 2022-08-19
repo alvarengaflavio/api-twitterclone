@@ -43,7 +43,9 @@ export const deleteUserController = async (req, res) => {
     if (!deleteUser) {
       throw new Error('User not found!');
     }
-    res.status(200).send(deleteUser);
+    const deleteJson = deleteUser.toJSON();
+    delete deleteJson.password;
+    res.status(200).send(deleteJson);
   } catch (err) {
     return res.status(400).send({ message: err.message });
   }
