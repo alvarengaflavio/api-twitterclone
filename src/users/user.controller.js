@@ -26,6 +26,9 @@ export const createUserController = async (req, res) => {
       );
     }
 
+    if (!userService.validateEmail(createUser.email))
+      throw new Error('Invalid email format!');
+
     const findUser = await userService.findByEmailUserService(createUser.email);
     if (findUser) {
       throw new Error('User already exists!');
