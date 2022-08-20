@@ -4,6 +4,7 @@ import cors from 'cors';
 import { connectToDatabase } from './database/database.js';
 import { router as userRoute } from './users/user.route.js';
 import { router as authRoute } from './auth/auth.route.js';
+import { router as tweetRoute } from './tweets/tweet.route.js';
 
 if (process.env.NODE_ENV !== 'production') dotenv.config();
 
@@ -18,6 +19,8 @@ app.use(express.json());
 app.use('/users', userRoute);
 /*      LOGIN ROUTER    */
 app.use('/auth', authRoute);
+/*      TWEET ROUTER    */
+app.use('/tweets', tweetRoute);
 
 app.listen(port, () => {
   console.log(`Server listening on port http://localhost:${port}`);
