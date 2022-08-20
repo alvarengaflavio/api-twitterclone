@@ -35,8 +35,8 @@ export const findByEmailUserService = async email => {
 };
 
 export const findByIdUserService = async userId => {
-  const user = await User.findById(userId);
-  return user;
+  const foundUser = await User.findById(userId);
+  return foundUser;
 };
 
 export const validateEmail = email => {
