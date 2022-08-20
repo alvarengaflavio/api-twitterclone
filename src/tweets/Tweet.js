@@ -14,6 +14,7 @@ const TweetSchema = new Schema({
   likes: { type: Array, required: true },
   replice: { type: Array, required: true },
   retweet: { type: Array, required: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 export const Tweet = model('Tweet', TweetSchema);
