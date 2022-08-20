@@ -14,7 +14,6 @@ export const authMiddleware = async (req, res, next) => {
     if (!/^Bearer$/i.test(scheme)) throw new Error('Token format error');
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
     const user = await findByIdUserService(decoded.id);
     if (!user || !user.id) {
       throw new Error('Invalid token');
