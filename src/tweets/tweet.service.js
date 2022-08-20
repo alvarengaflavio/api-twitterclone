@@ -5,8 +5,8 @@ export const createTweetService = async (userId, message) => {
     user: userId,
     message: message,
     likes: [],
-    replice: [],
-    retweet: [],
+    comments: [],
+    retweets: [],
   });
   const newTweet = await Tweet.create(tweet);
   return newTweet;

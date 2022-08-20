@@ -12,8 +12,8 @@ const TweetSchema = new Schema({
     required: true,
   },
   likes: { type: Array, required: true },
-  replice: { type: Array, required: true },
-  retweet: { type: Array, required: true },
+  comments: { type: Array, required: true },
+  retweets: { type: Array, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
