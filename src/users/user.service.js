@@ -33,3 +33,8 @@ export const findByEmailUserService = async email => {
   const user = await User.findOne({ email });
   return user;
 };
+
+export const findByIdUserService = async userId => {
+  const user = await User.findById(userId);
+  return user;
+};
