@@ -4,9 +4,9 @@ export const findAllUserController = async (req, res) => {
   try {
     const users = await userService.findAllUserService();
     if (!users.length) {
-      return res.status(404).json({ message: 'No users found' });
+      return res.status(404).send({ message: 'No users found' });
     }
-    res.status(200).json(users);
+    res.status(200).send(users);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
