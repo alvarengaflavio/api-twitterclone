@@ -43,3 +43,27 @@ export const findAllTweetsController = async (req, res) => {
     res.status(400).send({ message: err.message });
   }
 };
+
+export const searchTweetController = async (req, res) => {
+  try {
+    const { message } = req.query;
+    const tweets = await tweetService.findTweetService(message);
+    if (!tweets || !tweets.length)
+      return res.status(400).send({ message: 'No tweets found' });
+
+    return res.status(200).send({
+      tweets: tweets.map(tweet => ({
+        id: tweet._id,
+        message: tweet.message,
+        likes: tweet.likes.length,
+        comments: tweet.comments.length,
+        retweets: tweet.retweets.length,
+        name: tweet.user.name,
+        username: tweet.user.username,
+        avatar: tweet.user.avatar,
+      })),
+    });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};

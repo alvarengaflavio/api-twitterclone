@@ -1,8 +1,10 @@
-import express from 'express';
+import { Router } from 'express';
 import { authMiddleware } from '../auth/auth.middleware.js';
 import * as tweetController from './tweet.controller.js';
 
-export const router = express.Router();
+export const router = Router();
 
-router.post('/', authMiddleware, tweetController.createTweetController);
+// testar se realmente é /create ou só / mesmo
+router.post('/create', authMiddleware, tweetController.createTweetController);
 router.get('/', authMiddleware, tweetController.findAllTweetsController);
+router.get('/search', authMiddleware, tweetController.searchTweetController);

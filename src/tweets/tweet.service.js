@@ -18,3 +18,12 @@ export const findAllTweetsService = async () => {
     .populate('user');
   return allTweets;
 };
+
+export const searchTweetService = async message => {
+  const result = Tweet.find({
+    message: { $regex: `${message || ''}`, $options: 'i' },
+  })
+    .sort({ createdAt: -1 })
+    .populate('user');
+  return result;
+};
